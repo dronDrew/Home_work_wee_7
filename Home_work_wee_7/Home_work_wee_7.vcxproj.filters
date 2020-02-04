@@ -21,9 +21,15 @@
     <ClInclude Include="Template_list.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="My_exeptation.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="My_exeptation.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
