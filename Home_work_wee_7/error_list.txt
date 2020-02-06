@@ -1,0 +1,5 @@
+1 Problem of openning file
+2 Dividing on Zero
+3 Can`t create free space for your data
+4 You delete from empty List or array
+5 No such position or your List is empty

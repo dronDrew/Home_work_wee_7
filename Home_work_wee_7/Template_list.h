@@ -1,5 +1,6 @@
 #pragma once
 #include"dependies.h"
+#include "My_exeptation.h"
 namespace List {
 	template<typename T>
 	class List {
@@ -55,7 +56,9 @@ void List::List<T>::Add_to_head(T data) {
 	}
 	catch (const std::bad_alloc &be)
 	{
-		std::cout << be.what() << std::endl;
+		
+		custom_Excep a(0, "Can`t organize memory for data");
+		a.what();
 		return;
 	}
 }
@@ -78,7 +81,8 @@ void List::List<T>::Add_to_Tail(T data) {
 	}
 	catch (const std::bad_alloc & be)
 	{
-		std::cout << be.what() << std::endl;
+		custom_Excep a(0, "Can`t organize memory for data");
+		a.what();
 		return;
 	}
 }
@@ -87,7 +91,7 @@ void List::List<T>::Add_to_positition(T data, int position) {
 	try
 	{
 		if (this->top == nullptr) {
-			throw 1;
+			throw custom_Excep(10, "Your list is empty");
 		}
 		else
 		{
@@ -98,7 +102,7 @@ void List::List<T>::Add_to_positition(T data, int position) {
 				point = point->next;
 				if (point==nullptr)
 				{
-					throw 1;
+					throw custom_Excep(13, "No such position in list");
 				}
 				i++;
 			}
@@ -110,13 +114,15 @@ void List::List<T>::Add_to_positition(T data, int position) {
 			temp_2->prev = newnode;
 		}
 	}
-	catch (int) {
-		std::cout << "No such position to insertation\n";
-		return;
+	catch (custom_Excep & a)
+	{
+		a.what();
+		return ;
 	}
 	catch (const std::bad_alloc & be)
 	{
-		std::cout << be.what() << std::endl;
+		custom_Excep a(0, "Can`t organize memory for data");
+		a.what();
 		return;
 	}
 }
@@ -125,7 +131,7 @@ void List::List<T>::Remove_from_head() {
 	try
 	{
 		if (this->top == nullptr) {
-			throw 1;
+			throw custom_Excep(10, "Your list is empty");
 		}
 		elem* point = this->top;
 		if (point->next==nullptr)
@@ -141,13 +147,10 @@ void List::List<T>::Remove_from_head() {
 			this->top->prev = nullptr;
 		}
 	}
-	catch (int) {
-		std::cout << "Your List is empty\n";
-		return;
-	}
-	catch (const std::bad_alloc&be)
+	catch (custom_Excep & a)
 	{
-		std::cout << be.what() << std::endl;
+		a.what();
+		return ;
 	}
 }
 template<typename T>
@@ -155,7 +158,7 @@ void List::List<T>::Remove_from_tail() {
 	try
 	{
 		if (this->top == nullptr) {
-			throw 1;
+			throw custom_Excep(10, "Your list is empty");
 		}
 		elem* point = this->top;
 		if (point->next == nullptr) {
@@ -173,13 +176,10 @@ void List::List<T>::Remove_from_tail() {
 			point->next = nullptr;
 		}
 	}
-	catch (int) {
-		std::cout << "Your List is empty\n";
-		return;
-	}
-	catch (const std::bad_alloc & be)
+	catch (custom_Excep & a)
 	{
-		std::cout << be.what() << std::endl;
+		a.what();
+		return ;
 	}
 
 }
@@ -189,7 +189,7 @@ void List::List<T>::Remove_position(int position) {
 	{
 		if (this->top==nullptr)
 		{
-			throw 1;
+			throw custom_Excep(10, "Your list is empty");
 		}
 		else
 		{
@@ -200,7 +200,7 @@ void List::List<T>::Remove_position(int position) {
 				point = point->next;
 				i++;
 				if (point == nullptr) {
-					throw 'a';
+					throw custom_Excep(13, "No such position in list");
 				}
 			}
 			elem *temp = point->next->next;
@@ -215,38 +215,28 @@ void List::List<T>::Remove_position(int position) {
 			}
 		}
 	}
-	catch (char)
+	catch (custom_Excep & a)
 	{
-		std::cout << "no such position in List\n";
+		a.what();
 		return ;
 	}
-	catch (int)
-	{
-		std::cout << "Your list is empty\n";
-		return ;
-	}
-	catch (const std::bad_alloc & be)
-	{
-		std::cout << be.what() << std::endl;
-		return;
-	}
-
 }
 template<typename T>
 void List::List<T>::Remove_all() {
 	try
 	{
 		if (this->top == nullptr) {
-			throw 1;
+			throw custom_Excep(10, "Your list is empty");
 		}
 		while (this->top!=nullptr)
 		{
 			this->Remove_from_head();
 		}
 	}
-	catch (int)
+	catch (custom_Excep & a)
 	{
-		std::cout << "Your list is empty\n";
+		a.what();
+		return ;
 	}
 }
 template<typename T>
@@ -255,13 +245,13 @@ T List::List<T>::Get_value_from_head() {
 	{
 		if (this->top==nullptr)
 		{
-			throw 1;
+			throw custom_Excep(10, "Your list is empty");
 		}
 		return this->top->data;
 	}
-	catch (int)
+	catch (custom_Excep & a)
 	{
-		std::cout << "Your List is empty\n";
+		a.what();
 		return 0;
 	}
 }
@@ -271,7 +261,7 @@ T List::List<T>::get_value_from_tail() {
 	{
 		if (this->top == nullptr)
 		{
-			throw 1;
+			throw custom_Excep(10,"Your list is empty");
 		}
 		elem* point = this->top;
 		while (point->next!=nullptr)
@@ -280,18 +270,20 @@ T List::List<T>::get_value_from_tail() {
 		}
 		return point->data;
 	}
-	catch (int)
+	catch (custom_Excep &a)
 	{
-		std::cout << "Your List is empty\n";
+		a.what();
 		return 0;
 	}
 }
 template<typename T>
 T List::List<T>::Get_value_from_position(int position) {
+	excep g;
+	g.Init();
 	try
 	{
 		if (position < 0||this->top==nullptr) {
-			throw 1;
+			throw 5;
 		}
 		else if(position==0)
 		{
@@ -306,16 +298,17 @@ T List::List<T>::Get_value_from_position(int position) {
 				point = point->next;
 				i++;
 				if (point == nullptr) {
-					throw 1;
+					throw 5;
 				}
 			}
 			return point->data;
 		}
 
 	}
-	catch (int)
+	catch (int a)
 	{
-		std::cout << "No such position or your List is empty\n";
-		return 0;
+		g.Search(a);
+		g.Remove();
+		return 0 ;
 	}
 }

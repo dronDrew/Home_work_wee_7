@@ -146,6 +146,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="My_exeptation.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="error_list.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
