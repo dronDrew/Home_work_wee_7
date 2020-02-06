@@ -1,9 +1,15 @@
 #include "dependies.h"
 #include "Template_list.h"
 #include "My_exeptation.h"
+#include "fraction.h"
+#include "Complex.h"
+#include "Circle.h"
+#include "point.h"
+#include "Area.h"
 
 using namespace std;
 int main() {
+	math::Fraction rtf;
 	excep g;
 	g.Init();
 	List::List<int> a;
@@ -24,5 +30,8 @@ int main() {
 	std::cout << a.get_value_from_tail()<<std::endl;
 	//a.Remove_from_head();
 	g.Remove();
+	math::Complex nbv;
+	Geometry::circle round(10);
+	Geometry::squer qwf;
 		return 0;
 }

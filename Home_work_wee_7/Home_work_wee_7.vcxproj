@@ -138,13 +138,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Area.h" />
+    <ClInclude Include="Circle.h" />
+    <ClInclude Include="Complex.h" />
     <ClInclude Include="dependies.h" />
+    <ClInclude Include="fraction.h" />
     <ClInclude Include="My_exeptation.h" />
+    <ClInclude Include="point.h" />
     <ClInclude Include="Template_list.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Area.cpp" />
+    <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="Complex.cpp" />
+    <ClCompile Include="fraction.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="My_exeptation.cpp" />
+    <ClCompile Include="point.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="error_list.txt" />
